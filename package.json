@@ -1,0 +1,31 @@
+{
+  "name": "youtubesource",
+  "version": "1.0.0",
+  "author": "Daniel Esteban Nombela",
+  "description": "Youtube video source service",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon -w src src/index.js",
+    "lint": "eslint --cache src"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-validator": "^5.3.1",
+    "helmet": "^3.18.0",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "nodemon": "^1.19.0",
+    "pre-commit": "^1.2.2"
+  },
+  "pre-commit": {
+    "run": "lint",
+    "silent": true
+  }
+}

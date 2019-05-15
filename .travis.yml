@@ -1,0 +1,13 @@
+language: generic
+env:
+- secure: CA4p/gh5XMp0bUW4uEn3veY4ChzdU9ZObYVQoAEz2RRsijp2pMojEA/J8UjBAu1AVJ9cjTsZsZKtwTuFdG5i9nrTLdAI6CWcSEmlqoZPkj32BvQo8Ta4akgt9qUFLt4WA+Ra5S/s098ftc2hZ3uBerJ6c5+tOzkx9ofGpk/o7Myo8Wn4TiaDR5jG0/x5j9tSnFw35WHgnxxijC5GB+itqHveKu3X3pHJsRCTQv7dMXP4x0bSb7LVG313zDuqCV4zSN7wyfGcmsdNoGmRAnG39JCsMnH/F1LoaHCNTXscxb48dnQ8ZSeWSnXgPNGe71ab01ZDL/j+fGtuKdybATlZQeBT/WYhGh3DpqSjF8IlgejQmur6aDbshLNMB66w6A09rzWK2ofzckScN1ciFqJb9mMibw++UkCr00odMYMA6HrbPtk4YSuUOvnYAoAoTc0IJgglaVOFDkLfgkTVFarcpi+7DEItFzmQNhQUEQ7rUYpMipZzXLg2SyhrHrE66Ds74UHGgOa2a8RruZ3YABoU/Nfu33idAUtwGXg8kLUg+tLoKT+iyJdEeYKMlN76Gj8XNVktthjrdMzXze1Dh2ZOAtO1giv+SQEeInh9vsnRxivtPuij1dmpuVlOqnScGMa6bDSZM/YN7LQktHzo6/I/cHPxiJ01B+zFNSMVm1b3N/k=
+services:
+- docker
+script:
+- docker build -t danigatunes/youtubesource .
+deploy:
+  on:
+    branch: master
+  provider: script
+  script: echo ${DOCKER_PASSWORD} | docker login -u danigatunes --password-stdin && docker push danigatunes/youtubesource  
+  skip_cleanup: true
